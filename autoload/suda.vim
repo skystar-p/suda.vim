@@ -215,6 +215,9 @@ function! suda#BufEnter() abort
   elseif match(bufname, '^\/usr\/lib\/go\/*') isnot# -1
     " Skip go standard library
     return
+  elseif match(bufname, '\.go\/') isnot# -1
+    " Skip go mod
+    return
   elseif filereadable(bufname) && filewritable(bufname)
     " File is readable and writeable
     return
