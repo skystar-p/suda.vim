@@ -212,6 +212,9 @@ function! suda#BufEnter() abort
         \ || isdirectory(bufname)
     " Non file buffer
     return
+  elseif match(bufname, '^\/usr\/lib\/go\/*') isnot# -1
+    " Skip go standard library
+    return
   elseif filereadable(bufname) && filewritable(bufname)
     " File is readable and writeable
     return
